@@ -5,13 +5,10 @@ import mongoose from 'mongoose';
 //Conectar ao MongoDb pelo Mongoose
 (async () => {
   try {
-    await mongoose.connect(
-      'mongodb+srv://ismael:is23568974@bootcampfullstack-dwnrk.mongodb.net/grades?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.DB_BASEDATA, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (err) {
     console.log('Erro ao conectar ao MongoDB: ', err);
   }
