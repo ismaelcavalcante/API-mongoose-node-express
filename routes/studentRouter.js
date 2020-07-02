@@ -52,4 +52,18 @@ routers.patch('/student/:id', async (req, res) => {
   }
 });
 
+routers.put('/student/:id', async (req, res) => {
+  try {
+    const student = await studentModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { new: true }
+    );
+
+    res.status(200).send(student);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 export { routers };
